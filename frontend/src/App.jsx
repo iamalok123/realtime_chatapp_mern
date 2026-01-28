@@ -16,7 +16,7 @@ const App = () => {
 
   useEffect(() => {
     checkAuth();
-  }, []); // Empty dependency - checkAuth is stable from Zustand
+  }, [checkAuth]);
 
   if (isCheckingAuth && !authUser) {
     return (
