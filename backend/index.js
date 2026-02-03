@@ -5,7 +5,8 @@ import cors from "cors";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import connectDB from "./lib/db.js";
-const app = express();
+import { app, server } from "./lib/socket.js";
+
 
 // Middleware
 app.use(express.json({ limit: "10mb" })); // Increased limit for base64 images
@@ -21,7 +22,7 @@ app.use("/api/messages", messageRoutes);
 
 const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
     connectDB();
 });
