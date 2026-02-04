@@ -16,6 +16,12 @@ app.use(cors({
     credentials: true
 }));
 
+// Health Check Endpoint
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "OK", timestamp: new Date().toISOString() });
+});
+
+// API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
@@ -24,5 +30,6 @@ const PORT = process.env.PORT || 4000;
 
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
     connectDB();
 });
