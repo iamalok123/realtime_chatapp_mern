@@ -2,3 +2,99 @@
 @plugin "daisyui" {
   themes: all;
 }
+
+/* WhatsApp-like Chat Wallpaper Pattern */
+.chat-wallpaper {
+  background-color: oklch(var(--b2, 0.232 0.013 285.805));
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* WhatsApp-style message bubble tails */
+.wa-bubble-sent {
+  position: relative;
+  border-radius: 0.5rem 0 0.5rem 0.5rem;
+}
+.wa-bubble-sent::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -8px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid oklch(var(--p));
+  border-bottom: 8px solid transparent;
+}
+
+.wa-bubble-received {
+  position: relative;
+  border-radius: 0 0.5rem 0.5rem 0.5rem;
+}
+.wa-bubble-received::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-right: 8px solid oklch(var(--b2));
+  border-bottom: 8px solid transparent;
+}
+
+/* Custom scrollbar for WhatsApp look */
+.wa-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.wa-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.wa-scrollbar::-webkit-scrollbar-thumb {
+  background-color: oklch(var(--bc) / 0.2);
+  border-radius: 3px;
+}
+.wa-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: oklch(var(--bc) / 0.35);
+}
+
+/* WhatsApp header gradient */
+.wa-header {
+  background: oklch(var(--p));
+  color: oklch(var(--pc));
+}
+
+/* Smooth transitions */
+.wa-transition {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Search input focus ring removal */
+.wa-search:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Hover effect for contacts */
+.wa-contact-hover:hover {
+  background-color: oklch(var(--b2));
+}
+.wa-contact-active {
+  background-color: oklch(var(--b2));
+}
+
+/* WhatsApp typing indicator */
+@keyframes typing-dot {
+  0%, 60%, 100% { opacity: 0.3; }
+  30% { opacity: 1; }
+}
+.typing-dot:nth-child(1) { animation: typing-dot 1.4s infinite 0s; }
+.typing-dot:nth-child(2) { animation: typing-dot 1.4s infinite 0.2s; }
+.typing-dot:nth-child(3) { animation: typing-dot 1.4s infinite 0.4s; }
+
+/* Mobile responsive - hide sidebar when chat is selected */
+@media (max-width: 768px) {
+  .wa-sidebar-hidden {
+    display: none;
+  }
+  .wa-chat-hidden {
+    display: none;
+  }
+}

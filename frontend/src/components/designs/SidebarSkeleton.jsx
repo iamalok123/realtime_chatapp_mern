@@ -1,35 +1,30 @@
-import { Users } from "lucide-react";
+import { Search } from "lucide-react";
 
 const SidebarSkeleton = () => {
-    // Create 8 skeleton items
     const skeletonContacts = Array(8).fill(null);
 
     return (
-        <aside
-            className="h-full w-20 lg:w-72 border-r border-base-300 
-    flex flex-col transition-all duration-200"
-        >
-            {/* Header */}
-            <div className="border-b border-base-300 w-full p-5">
-                <div className="flex items-center gap-2">
-                    <Users className="w-6 h-6" />
-                    <span className="font-medium hidden lg:block">Contacts</span>
+        <aside className="h-full w-full md:w-90 lg:w-105 border-r border-base-300 flex flex-col bg-base-100">
+            {/* Search Header Skeleton */}
+            <div className="p-3 space-y-3">
+                <div className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-base-content/20" />
+                    <div className="skeleton w-full h-10 rounded-lg" />
+                </div>
+                <div className="flex gap-2">
+                    <div className="skeleton w-12 h-6 rounded-full" />
+                    <div className="skeleton w-20 h-6 rounded-full" />
                 </div>
             </div>
 
             {/* Skeleton Contacts */}
-            <div className="overflow-y-auto w-full py-3">
+            <div className="overflow-y-auto flex-1">
                 {skeletonContacts.map((_, idx) => (
-                    <div key={idx} className="w-full p-3 flex items-center gap-3">
-                        {/* Avatar skeleton */}
-                        <div className="relative mx-auto lg:mx-0">
-                            <div className="skeleton size-12 rounded-full" />
-                        </div>
-
-                        {/* User info skeleton - only visible on larger screens */}
-                        <div className="hidden lg:block text-left min-w-0 flex-1">
+                    <div key={idx} className="w-full px-3 py-3 flex items-center gap-3">
+                        <div className="skeleton w-12 h-12 rounded-full shrink-0" />
+                        <div className="flex-1 border-b border-base-200 pb-3">
                             <div className="skeleton h-4 w-32 mb-2" />
-                            <div className="skeleton h-3 w-16" />
+                            <div className="skeleton h-3 w-20" />
                         </div>
                     </div>
                 ))}
